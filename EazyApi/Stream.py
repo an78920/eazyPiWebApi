@@ -1,5 +1,5 @@
 from EazyApi import *
-from EazyApi.WebID import *
+from EazyApi.GetByPath import *
 
 
 class Interpoolated:
@@ -166,7 +166,7 @@ class Value:
 
 
 if __name__ == '__main__':
-    webid = WebID.points('3QT-PI-101-PL')
+    webid = GetByPath.points('3QT-PI-101-PL')['WebId']
 
     interpolated = Interpoolated(webid)
     print(interpolated.query())
