@@ -1,7 +1,7 @@
 from EazyApi import *
 
 
-class WebID:
+class GetByPath:
     @classmethod
     def points(cls, tag):
         url = endpoint + '/points'
@@ -9,7 +9,7 @@ class WebID:
             'path': '\\\\' + server + f'\\{tag}'
         }
         resp = eazy_requests(url, params)
-        return resp.json()['WebId']
+        return resp.json()
 
     @classmethod
     def elements(cls, afdb, subpaths):
@@ -19,7 +19,7 @@ class WebID:
             'path': '\\\\' + server + f'\\{afdb}\\{subpath}'
         }
         resp = eazy_requests(url, params)
-        return resp.json()['WebId']
+        return resp.json()
 
     @classmethod
     def assetdatabases(cls, afdb):
@@ -28,7 +28,7 @@ class WebID:
             'path': '\\\\' + server + f'\\{afdb}'
         }
         resp = eazy_requests(url, params)
-        return resp.json()['WebId']
+        return resp.json()
 
     @classmethod
     def attributes(cls, afdb, subpaths, attribute):
@@ -38,7 +38,7 @@ class WebID:
             'path': '\\\\' + server + f'\\{afdb}\\{subpath}|{attribute}'
         }
         resp = eazy_requests(url, params)
-        return resp.json()['WebId']
+        return resp.json()
 
     @classmethod
     def assetservers(cls, assetservers=server):
@@ -47,7 +47,7 @@ class WebID:
             'path': '\\\\' + assetservers
         }
         resp = eazy_requests(url, params)
-        return resp.json()['WebId']
+        return resp.json()
 
     @classmethod
     def assetservers(cls, assetservers=server):
@@ -56,11 +56,11 @@ class WebID:
             'path': '\\\\' + assetservers
         }
         resp = eazy_requests(url, params)
-        return resp.json()['WebId']
+        return resp.json()
 
 
 if __name__ == '__main__':
-    print(WebID.assetdatabases('CL'))
-    print(WebID.points('3QT-PI-101-PL'))
-    print(WebID.elements('CL', ['CL', '8工位']))
-    print(WebID.attributes('CL', ['CL', '8工位'], '1#取坯車超載'))
+    print(GetByPath.assetdatabases('CL'))
+    print(GetByPath.points('3QT-PI-101-PL'))
+    print(GetByPath.elements('CL', ['CL', '8工位']))
+    print(GetByPath.attributes('CL', ['CL', '8工位'], '1#取坯車超載'))
