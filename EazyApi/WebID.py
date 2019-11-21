@@ -49,6 +49,15 @@ class WebID:
         resp = eazy_requests(url, params)
         return resp.json()['WebId']
 
+    @classmethod
+    def assetservers(cls, assetservers=server):
+        url = endpoint + '/assetservers'
+        params = {
+            'path': '\\\\' + assetservers
+        }
+        resp = eazy_requests(url, params)
+        return resp.json()['WebId']
+
 
 if __name__ == '__main__':
     print(WebID.assetdatabases('CL'))
