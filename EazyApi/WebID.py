@@ -1,5 +1,6 @@
 from EazyApi import *
 
+
 class WebID:
     @classmethod
     def points(cls, tag):
@@ -35,6 +36,15 @@ class WebID:
         subpath = '\\'.join(subpaths)
         params = {
             'path': '\\\\' + server + f'\\{afdb}\\{subpath}|{attribute}'
+        }
+        resp = eazy_requests(url, params)
+        return resp.json()['WebId']
+
+    @classmethod
+    def assetservers(cls, assetservers=server):
+        url = endpoint + '/assetservers'
+        params = {
+            'path': '\\\\' + assetservers
         }
         resp = eazy_requests(url, params)
         return resp.json()['WebId']
